@@ -21,8 +21,16 @@
                     </div>
                     <div class="detail-box">
                         <p>
-                            +02 1234567890
+                            <?php
+                            $options = get_option("_prefix_my_options");
+                            if (isset($options['cell-number'])) {
+                                echo $options['cell-number'];
+                            } else {
+                                echo "Cell number not available.";
+                            }
+                            ?>
                         </p>
+
                     </div>
                 </div>
             </a>
@@ -47,8 +55,12 @@
 <!-- footer section -->
 <footer class="container-fluid footer_section">
     <p>
-        &copy; 2020 All Rights Reserved. Design by
-        <a href="https://html.design/">Free Html Templates</a>
+        <?php $options = get_option('_prefix_my_options');
+        echo $options['opt-text-2'];
+        ?>
+
+        <!-- &copy; 2020 All Rights Reserved. Design by -->
+        <!-- <a href="https://html.design/">Free Html Templates</a> -->
     </p>
 </footer>
 <!-- footer section -->
@@ -56,5 +68,4 @@
 <!-- <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/bootstrap.js"></script> -->
 
-<script src="<?php echo get_template_directory_uri(); ?>/assets/js/jquery-3.4.1.min.js"></script>
-<script src="<?php echo get_template_directory_uri(); ?>/assets/js/bootstrap.js"></script>
+<?php wp_footer(); ?>
